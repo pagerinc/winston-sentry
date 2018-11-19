@@ -22,7 +22,13 @@ module.exports = class ServerTransport extends Transport {
         });
 
         if (info.level === 'error') {
-            Sentry.captureException(info[Symbol.for('message')]);
+            if (info.message.error && info.message.error instanceof Error) {
+                Sentry.captureException(info.message.error);
+            } else {
+                const error = new Error(info.message)
+                error.data = info[Symbol.for('message')]
+                Sentry.captureException(error);
+            }
         }
 
         if (info.level === 'warn') {
@@ -32,6 +38,3 @@ module.exports = class ServerTransport extends Transport {
         callback();
     }
 };
-
-
-
