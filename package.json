@@ -1,0 +1,16 @@
+{
+  "name": "@pager/winston-sentry",
+  "version": "0.1.0",
+  "description": "Winston Sentry Transport",
+  "main": "index.js",
+  "author": "Mauricio Muñoz <mauricio@pager.com>",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/pagerinc/winston-sentry.git"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "@sentry/node": "4.x.x",
+    "winston-transport": "4.x.x"
+  }
+}
